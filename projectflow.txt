@@ -1,4 +1,5 @@
-GUI - User inputs candidate name
+GUI - User inputs candidate name. Tells Candidate Reference that user is searching.
+Candidate Reference - Returns list of candidates. Hands off to Search.
 Search - Finds candidate within list, hands ID number off to Bill Reference
 Bill Reference - Returns list of bills with name and description. Hands off to Search.
 GUI - User inputs bill name or desc. keywords
