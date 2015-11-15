@@ -66,18 +66,10 @@ def scan_page(PAGE_URL):
     strlist = regex2[0].split("</tr>", 10)
     for str in strlist:
         #Info Get
-        print("\nDescript: \n")
         descript = description_get(str)
-        print(descript)
-        print("\nName: \n")
         name = name_get(str)
-        print(name)
-        print("\nVoted: \n")
         voted = voted_get(str)
-        print(voted)
-        print("\nPassed: \n")
         passed = passed_get(str)
-        print(passed)
         if name != "N/A":
             d[dictionary_index] = [name,voted,passed,descript]
             dictionary_index = dictionary_index + 1
@@ -88,9 +80,14 @@ def scan_page(PAGE_URL):
 def main(input_ID):
     PARTICULAR_URL = BASE_WEB_URL + input_ID + "/votes/"
     PAGE_URL = BASE_WEB_URL + input_ID + "/votes/"
-    print(PARTICULAR_URL)
     max_pg = get_max_pg(PAGE_URL)
     scan_page(PAGE_URL)
+    print(max_pg)
+    ma_pg = max_pg -100
+    for val in range(2,ma_pg):
+        print(val)
+        PAGE_URL = BASE_WEB_URL + input_ID + "/votes/" + "page" + str(val) + "/"
+        scan_page(PAGE_URL)
     print(d)
 
 if __name__ == "__main__":
