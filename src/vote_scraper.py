@@ -99,9 +99,8 @@ def scan_page(PAGE_URL):
             dictionary_index = dictionary_index + 1
 
 
-
 #Returns dictionary of votes/bills - ALL POSSIBLE VALUES
-def get_vote_dictionary(input_ID):
+def get_vote_dictionary_all(input_ID):
     global d
     global dictionary_index
     d = dict()
