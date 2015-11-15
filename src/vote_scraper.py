@@ -82,7 +82,7 @@ def get_vote_dictionary(input_ID):
     PAGE_URL = BASE_WEB_URL + input_ID + "/votes/"
     max_pg = get_max_pg(PAGE_URL)
     scan_page(PAGE_URL)
-    ma_pg = max_pg -100
+    ma_pg = max_pg
     for val in range(2,ma_pg):
         PAGE_URL = BASE_WEB_URL + input_ID + "/votes/" + "page" + str(val) + "/"
         scan_page(PAGE_URL)
