@@ -111,7 +111,7 @@ class PollPollUI(QtGui.QWidget):
                 self.setLayout(main_layout)
                 self.setWindowIcon(app_icon)
                 self.setGeometry(300, 300, 800, 600)
-                self.setWindowTitle('Buttons')
+                self.setWindowTitle('PollPoll')
                 self.show()
 
 def main():
