@@ -5,6 +5,8 @@ dictionary_index = 0
 BASE_WEB_URL = "http://projects.washingtonpost.com/congress/members/"
 PARTICULAR_URL = "http://projects.washingtonpost.com/congress/members/"
 d = dict()
+current_page = BASE_WEB_URL
+
 
 #Get Maximum number of pages to iterate through
 def get_max_pg(PAGE_URL):
@@ -37,6 +39,11 @@ def name_get(in_str):
     if rep != []:
         return rep[0]
     return "N/A"
+
+#Get Current Page
+def get_current_page():
+    global current_page
+    return current_page
 
 #Voted
 def voted_get(in_str):
@@ -73,6 +80,8 @@ def vote_num_get(in_str):
 def scan_page(PAGE_URL):
     global d
     global dictionary_index
+    global current_page
+    current_page = PAGE_URL
     html = urlopen(PAGE_URL).read()
     regex = re.findall('(?<=VOTE ROW).*(?=END VOTE ROW)', html, re.DOTALL)
     str1 = regex[0]
@@ -104,7 +113,6 @@ def get_vote_dictionary(input_ID):
     for val in range(2,ma_pg):
         PAGE_URL = BASE_WEB_URL + input_ID + "/votes/" + "page" + str(val) + "/"
         scan_page(PAGE_URL)
-        print(PAGE_URL)
     dictionary_index = 0
     return d
 #Returns dictionary of votes/bills - MAX POSSIBLE VALUES
@@ -123,7 +131,6 @@ def get_vote_dictionary(input_ID, MAX = 10):
     for val in range(2,ma_pg):
         PAGE_URL = BASE_WEB_URL + input_ID + "/votes/" + "page" + str(val) + "/"
         scan_page(PAGE_URL)
-        print(PAGE_URL)
     dictionary_index = 0
     return d
 
@@ -142,7 +149,6 @@ def get_vote_dictionary(input_ID, MAX = 10, MIN = 2):
         ma_pg = max_pg
     for val in range(MIN,ma_pg):
         PAGE_URL = BASE_WEB_URL + input_ID + "/votes/" + "page" + str(val) + "/"
-        print(PAGE_URL)
         scan_page(PAGE_URL)
     dictionary_index = 0
     return d
