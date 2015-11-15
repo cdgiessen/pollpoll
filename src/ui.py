@@ -27,14 +27,16 @@ class PollPollUI(QtGui.QWidget):
 
         def update_table(self):
                 self.table.clear()
+                rowCount = 0
                 self.table.setHorizontalHeaderLabels(["Bill", "Vote #", "Voted", "Passed", "Description"])
                 if len(self.keyword_str) > 0:
-                        self.table.setRowCount(len(self.bill_list))
                         for i in self.bill_list:
                                 if search_bill_keywords.is_contained(self.bill_list[i], self.keyword_str) == 1:
+                                        rowCount = rowCount + 1
                                         for j in range(0, len(self.bill_list[i])):
                                                 item = QtGui.QTableWidgetItem(self.bill_list[i][j])
-                                                self.table.setItem(i, j, item)
+                                                self.table.setItem(rowCount-1, j, item)
+                        self.table.setRowCount(rowCount)
                 else:
                         self.table.setRowCount(len(self.bill_list))
                         for i in self.bill_list:

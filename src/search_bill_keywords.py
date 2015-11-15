@@ -7,7 +7,7 @@ def select_bills(dictionary, string = ""):
     for i in dictionary:
         for st in sList:
             s = str(st)
-            if s in str(dictionary[i][4]):
+            if s.lower() in str(dictionary[i][4]).lower():
                 newDict[i] = dictionary[i]
     return newDict
 
@@ -16,6 +16,6 @@ def is_contained(table, string = ""):
 
     for st in sList:
         s = str(st)
-        if s in str(table[4]):
+        if s.lower() in str(table[4]).lower():
             return 1
     return 0
