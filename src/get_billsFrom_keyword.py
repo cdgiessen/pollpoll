@@ -1,8 +1,8 @@
 import re
 
-def selectBills(dict,string):
+def selectBills(dict, string = ""):
     #looks through the dict and checks to see if any of them don't have the keyword.
-    if not string:
+    if string == "":
         return dict
     else:
         newList = {}
