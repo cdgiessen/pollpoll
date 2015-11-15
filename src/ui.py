@@ -29,7 +29,7 @@ class PollPollUI(QtGui.QWidget):
                 for i in range(self.bill_list):
                         for j in range(0,3):
                                 item = QtGui.QTableWidgetItem()
-                                item.setName(bill_list[i][j])
+                                item.setName(self.bill_list[i][j])
                                 self.table.setItem(item, i, j)
                 print("member: " + memstr)
 
@@ -94,8 +94,11 @@ class PollPollUI(QtGui.QWidget):
                 main_layout.addLayout(member_layout)
                 main_layout.addLayout(keyword_layout)
                 main_layout.addWidget(self.table)
-                self.setLayout(main_layout)
 
+                app_icon = QtGui.QIcon()
+                app_icon.addFile('pp_icon.png', QtCore.QSize(256,256))
+                self.setLayout(main_layout)
+                self.setWindowIcon(app_icon)
                 self.setGeometry(300, 300, 800, 600)
                 self.setWindowTitle('Buttons')
                 self.show()
