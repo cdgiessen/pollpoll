@@ -115,7 +115,7 @@ def get_vote_dictionary(input_ID, MAX = 10):
     return d
 
 #Returns dictionary of votes/bills - MAX POSSIBLE VALUES
-def get_vote_dictionaryMIN(input_ID, MAX = 10, MIN = 2):
+def get_vote_dictionary(input_ID, MAX = 10, MIN = 2):
     global dictionary_index
     global d
     d = dict()
