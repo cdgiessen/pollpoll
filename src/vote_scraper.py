@@ -61,6 +61,14 @@ def passed_get(in_str):
         return strF3[0]
     return "Unknown"
 
+#Vote #
+def vote_num_get(in_str):
+    strV = re.findall('VOTE [0-9]{1,4}',in_str)
+    if strV != []:
+        return strV[0]
+    return "Unknown"
+
+
 #Scans Page
 def scan_page(PAGE_URL):
     global d
@@ -76,8 +84,9 @@ def scan_page(PAGE_URL):
         name = name_get(str)
         voted = voted_get(str)
         passed = passed_get(str)
+        vote_num = vote_num_get(str)
         if name != "N/A":
-            d[dictionary_index] = [name,voted,passed,descript]
+            d[dictionary_index] = [name,vote_num,voted,passed,descript]
             dictionary_index = dictionary_index + 1
 
 
