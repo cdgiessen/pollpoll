@@ -20,6 +20,3 @@ def select_bills(dictionary, string = ""):
             if allRelevant:
                 newList[value] = dictionary[value]
         return newList
-
-def get_member_url_data(stringName, nameDict):
-    return nameDict[stringName]

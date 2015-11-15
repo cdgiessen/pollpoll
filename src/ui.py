@@ -34,7 +34,7 @@ class PollPollUI(QtGui.QWidget):
                 print("member: " + memstr)
 
         def update_bill_list(self):
-                self.bill_list = search_bill_keywords.select_bills(vote_scraper.get_vote_dictionary(search_bill_keywords.get_member_url_data(self.member_str, self.member_list)),self.keyword_str)
+                self.bill_list = search_bill_keywords.select_bills(vote_scraper.get_vote_dictionary(self.member_list[self.member_str]),self.keyword_str)
 
         def set_member_list(self, member_list):
                 self.member_list = member_list
