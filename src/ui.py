@@ -51,12 +51,13 @@ class PollPollUI(QtGui.QWidget):
 
                 member_model = QtGui.QStringListModel()
                 member_model.setStringList(member_string_list)
-                self.member_completer = QtGui.QCompleter()
-                self.member_completer.setCompletionMode(QtGui.QCompleter().InlineCompletion)
-                self.member_completer.setModel(member_model)
-                self.member_completer.highlighted.connect(self.member_changed)
+                member_completer = QtGui.QCompleter()
+                member_completer.setCompletionMode(QtGui.QCompleter().InlineCompletion)
+                member_completer.setModel(member_model)
+                member_completer.highlighted.connect(self.member_changed)
+                member_completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
                 member_le = QtGui.QLineEdit(self)
-                member_le.setCompleter(self.member_completer)
+                member_le.setCompleter(member_completer)
                 member_layout.addWidget(member_le)
 
                 keyword_layout = QtGui.QHBoxLayout()
@@ -67,6 +68,8 @@ class PollPollUI(QtGui.QWidget):
 
                 keyword_completer = QtGui.QCompleter()
                 keyword_completer.activated.connect(self.keyword_changed)
+                keyword_completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
+
                 keyword_completer.setModel(keyword_model)
 
                 keyword_le = QtGui.QLineEdit(self)
