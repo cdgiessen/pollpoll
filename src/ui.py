@@ -84,8 +84,8 @@ class PollPollUI(QtGui.QWidget):
                 self.show()
 
 def main():
-        f = open(keywords.txt)
-        sample_keywords = f.readLine().split(',')
+        f = open('keywords.txt')
+        sample_keywords = f.read().split(',')
         members = member_list_scraper.get_member_names()
         app = QtGui.QApplication(sys.argv)
         ex = PollPollUI()
