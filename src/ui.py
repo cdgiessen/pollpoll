@@ -6,13 +6,18 @@ import member_list_scraper
 import search_bill_keywords
 import vote_scraper
 
+# Main class for the UI
 class PollPollUI(QtGui.QWidget):
 
+        # Constructor
         def __init__(self):
                 super(PollPollUI, self).__init__()
                 self.member_str = "foo"
                 self.keyword_str = ""
 
+        # Override of event handler,
+        # exits on escape, gets full history of
+        # current member for F11
         def keyPressEvent(self, e):
                 if e.key() == QtCore.Qt.Key_Escape:
                         self.close()
@@ -21,12 +26,15 @@ class PollPollUI(QtGui.QWidget):
                         self.bill_list_display = search_bill_keywords.select_bills(self.bill_list,self.keyword_str)
                         self.update_table()
 
+        # Signal handler for when keyword buffer is changed/autocompleted
         def keyword_changed(self, keystr):
                 self.keyword_str = keystr
                 self.bill_list_display = search_bill_keywords.select_bills(self.bill_list,self.keyword_str)
                 self.update_table()
                 print("keyword: " + keystr)
 
+        # Function to update the graphical table
+        # from the dictionaries
         def update_table(self):
                 self.table.clear()
                 rowCount = 0
@@ -46,6 +54,7 @@ class PollPollUI(QtGui.QWidget):
                                         item = QtGui.QTableWidgetItem(self.bill_list[i][j])
                                         self.table.setItem(i, j, item)
 
+        # Signal handler for when the member buffer is changed/autocompleted
         def member_changed(self, memstr):
                 if self.member_str == memstr:
                         return
@@ -60,15 +69,18 @@ class PollPollUI(QtGui.QWidget):
                 self.update_table()
                 print("member: " + memstr)
 
+        # Simple setter for member list
         def set_member_list(self, member_list):
                 self.member_list = member_list
 
+        # Defines mister president
         def mister_president(self):
                 d = dict()
                 for i in range(0, 88):
                         d[i] = ["H S PR3Z", "China", "The President", "Best Hair 2016", "Obviously, the President"]
                 return d
 
+        # Huge function that sets out the layout and initializes it
         def initUI(self, member_string_list, keyword_string_list):
                 member_layout = QtGui.QHBoxLayout()
                 member_description = QtGui.QLabel("Member")
@@ -125,6 +137,7 @@ class PollPollUI(QtGui.QWidget):
                 self.setWindowTitle('PollPoll')
                 self.show()
 
+# Main entry point
 def main():
         f = open('keywords.txt')
         sample_keywords = f.read().split(',')
