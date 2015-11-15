@@ -1,7 +1,7 @@
 #!/usr/bin/env python2.7
 
 import sys
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 
 class PollPollUI(QtGui.QWidget):
 
@@ -16,7 +16,7 @@ class PollPollUI(QtGui.QWidget):
                 member_layout.addWidget(member_description)
 
                 member_model = QtGui.QStringListModel()
-                member_model.setStringList(['VHF', 'Drug war', 'Serbian Centro', 'radar', 'CCS', 'Mossberg', 'MD5', 'Ft. Bragg', 'Oscor', 'embassy', 'XS4ALL', 'Osama', 'Mayfly', 'HALO'])
+                member_model.setStringList(['jet fuel can\'t melt steel beams', 'VHF', 'Drug war', 'Serbian Centro', 'radar', 'CCS', 'Mossberg', 'MD5', 'Ft. Bragg', 'Oscor', 'embassy', 'XS4ALL', 'Osama bin Laden', 'Mayfly', 'HALO'])
                 member_completer = QtGui.QCompleter()
                 member_completer.setModel(member_model)
                 member_le = QtGui.QLineEdit(self)
@@ -28,7 +28,7 @@ class PollPollUI(QtGui.QWidget):
                 keyword_description = QtGui.QLabel("Keyword")
                 keyword_layout.addWidget(keyword_description)
                 keyword_model = QtGui.QStringListModel()
-                keyword_model.setStringList(['ANZUS', 'Plot', 'NATO', 'Attorney General', 'CDMA', 'Ansar al-Islam', 'PBX', 'tempest', 'Mayfly', 'Intiso', 'gamma', 'Zachawi', 'afsatcom', 'CIA', 'Saddam Hussein'])
+                keyword_model.setStringList(['ANZUS', 'jet fuel', 'steel beams', 'George Bush', '9/11', 'Plot', 'NATO', 'Attorney General', 'CDMA', 'Ansar al-Islam', 'PBX', 'tempest', 'Mayfly', 'Intiso', 'gamma', 'Zachawi', 'afsatcom', 'CIA', 'Saddam Hussein'])
 
                 keyword_completer = QtGui.QCompleter()
                 keyword_completer.setModel(keyword_model)
@@ -38,6 +38,13 @@ class PollPollUI(QtGui.QWidget):
                 keyword_layout.addWidget(keyword_le)
 
                 table = QtGui.QTableWidget()
+
+                rows = table.rowCount()
+                columns = table.columnCount()
+                for i in range(rows):
+                        for j in range(columns):
+                                item = table.item(i,j)
+                                item.setFlags(QtCore.Qt.ItemIsEditable, false)
 
                 #table.setSizePolicy(QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Expanding)
                 table.setRowCount(100)
