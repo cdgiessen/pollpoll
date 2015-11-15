@@ -20,10 +20,11 @@ class PollPollUI(QtGui.QWidget):
                 self.keyword_str = keystr
                 print("keyword: " + keystr)
 
-
         def member_changed(self, memstr):
                 if self.member_str == memstr:
                         return
+                self.update_bill_list()
+                self.table.setRowCount(len(self.bill_list))
                 self.member_str = memstr
                 print("member: " + memstr)
 
