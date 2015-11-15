@@ -76,19 +76,14 @@ def scan_page(PAGE_URL):
 
 
 
-#Main
-def main(input_ID):
+#Returns dictionary of votes/bills
+def get_vote_dictionary(input_ID):
     PARTICULAR_URL = BASE_WEB_URL + input_ID + "/votes/"
     PAGE_URL = BASE_WEB_URL + input_ID + "/votes/"
     max_pg = get_max_pg(PAGE_URL)
     scan_page(PAGE_URL)
-    print(max_pg)
     ma_pg = max_pg -100
     for val in range(2,ma_pg):
-        print(val)
         PAGE_URL = BASE_WEB_URL + input_ID + "/votes/" + "page" + str(val) + "/"
         scan_page(PAGE_URL)
-    print(d)
-
-if __name__ == "__main__":
-    main("A000369")
+    return d
