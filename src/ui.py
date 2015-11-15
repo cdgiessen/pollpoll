@@ -7,15 +7,14 @@ class PollPollUI(QtGui.QWidget):
 
         def __init__(self):
                 super(PollPollUI, self).__init__()
-                self.initUI()
 
-        def initUI(self):
+        def initUI(self, member_string_list, keyword_string_list):
                 member_layout = QtGui.QHBoxLayout()
                 member_description = QtGui.QLabel("Member")
                 member_layout.addWidget(member_description)
 
                 member_model = QtGui.QStringListModel()
-                member_model.setStringList(['jet fuel can\'t melt steel beams', 'VHF', 'Drug war', 'Serbian Centro', 'radar', 'CCS', 'Mossberg', 'MD5', 'Ft. Bragg', 'Oscor', 'Benghazi', 'private mail server', 'Hillary Clinton', 'embassy', 'XS4ALL', 'Osama bin Laden', 'Mayfly', 'HALO'])
+                member_model.setStringList(member_string_list)
                 member_completer = QtGui.QCompleter()
                 member_completer.setModel(member_model)
                 member_le = QtGui.QLineEdit(self)
@@ -26,7 +25,7 @@ class PollPollUI(QtGui.QWidget):
                 keyword_description = QtGui.QLabel("Keyword")
                 keyword_layout.addWidget(keyword_description)
                 keyword_model = QtGui.QStringListModel()
-                keyword_model.setStringList(['ANZUS', 'jet fuel', 'steel beams', 'George Bush', '9/11', 'Plot', 'NATO', 'Attorney General', 'CDMA', 'Ansar al-Islam', 'PBX', 'tempest', 'Mayfly', 'Intiso', 'gamma', 'Zachawi', 'Edward Snowden', 'afsatcom', 'CIA', 'Saddam Hussein'])
+                keyword_model.setStringList(keyword_string_list)
 
                 keyword_completer = QtGui.QCompleter()
                 keyword_completer.setModel(keyword_model)
@@ -60,8 +59,11 @@ class PollPollUI(QtGui.QWidget):
                 self.show()
 
 def main():
+        foo = ['jet fuel can\'t melt steel beams', 'VHF', 'Drug war', 'Serbian Centro', 'radar', 'CCS', 'Mossberg', 'MD5', 'Ft. Bragg', 'Oscor', 'Benghazi', 'private mail server', 'Hillary Clinton', 'embassy', 'XS4ALL', 'Osama bin Laden', 'Mayfly', 'HALO']
+        bar = ['ANZUS', 'jet fuel', 'steel beams', 'George Bush', '9/11', 'Plot', 'NATO', 'Attorney General', 'CDMA', 'Ansar al-Islam', 'PBX', 'tempest', 'Mayfly', 'Intiso', 'gamma', 'Zachawi', 'Edward Snowden', 'afsatcom', 'CIA', 'Saddam Hussein']
         app = QtGui.QApplication(sys.argv)
         ex = PollPollUI()
+        ex.initUI(foo, bar)
         sys.exit(app.exec_())
 
 
