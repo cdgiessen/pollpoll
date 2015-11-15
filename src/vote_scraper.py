@@ -24,7 +24,9 @@ def pg_by_pg():
 def description_get(in_str):
     str3 = re.findall('(?=md-gray">).*(?=</p>)', in_str, re.DOTALL)
     strl3 = str3[0].split(">", 1)
-    return (strl3[1])
+    strNoNewLine = re.sub('[\n]+', "", strl3[1])
+    strNoSpaces = re.sub('[\s]{2,}', "", strNoNewLine)
+    return (strNoSpaces)
 
 #Name Get
 def name_get(in_str):
