@@ -41,6 +41,10 @@ def name_get(in_str):
 #Voted
 def voted_get(in_str):
     strV = re.findall('(?=vote-).*',in_str)
+    if strV[0] == "vote-yes":
+        return "yes"
+    if strV[0] == "vote-no":
+        return "no"
     return strV[0]
 
 #Passed
