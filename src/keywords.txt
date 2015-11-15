@@ -1,0 +1,1 @@
+['abortion', 'farm', 'medicaid', 'medicare', 'internet', 'tax', 'minimum wage', 'pension', 'immigration', 'marijuana', 'education', 'funding', 'transportation', 'drone', 'privacy', 'vehicle', 'autonomous','gmo', 'monsanto', 'spending', 'rights', 'women', 'water', 'drug', 'carbon', 'emmision', 'cigarettes'] 
