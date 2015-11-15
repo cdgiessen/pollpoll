@@ -6,17 +6,23 @@ def select_bills(dictionary, string = ""):
     if string == "":
         return dictionary
     else:
-        stringList = string.split()
+        #stringList = string.split() #if string is not a single word
         newList = {}
-        
+
+        p = re.compile(string)
+
         for value in range(0,len(dictionary)):
             allRelevant = False
             
-            for stringValue in range(0,len(stringList)):
-                p = re.compile(stringList[stringValue])
-                if p.search(dictionary[value][3]) != None:
-                    allRelevant = True
+            #for stringValue in range(0,len(stringList)):
+            #    p = re.compile(stringList[stringValue])
+            #    if p.search(dictionary[value][3]) != None:
+            #        allRelevant = True
                     
-            if allRelevant:
+            #if allRelevant:
+            #    newList[value] = dictionary[value]
+
+            if p.match(dictionary[value][3]) != None:
                 newList[value] = dictionary[value]
+
         return newList

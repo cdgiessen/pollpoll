@@ -11,6 +11,7 @@ class PollPollUI(QtGui.QWidget):
         def __init__(self):
                 super(PollPollUI, self).__init__()
                 self.member_str = "foo"
+                self.keyword_str = ""
 
         def keyPressEvent(self, e):
                 if e.key() == QtCore.Qt.Key_Escape:
@@ -26,7 +27,7 @@ class PollPollUI(QtGui.QWidget):
                 self.member_str = memstr
                 self.update_bill_list()
                 self.table.setRowCount(len(self.bill_list))
-                for i in range(self.bill_list):
+                for i in range(len(self.bill_list)):
                         for j in range(0,3):
                                 item = QtGui.QTableWidgetItem()
                                 item.setName(self.bill_list[i][j])
@@ -34,7 +35,7 @@ class PollPollUI(QtGui.QWidget):
                 print("member: " + memstr)
 
         def update_bill_list(self):
-                self.bill_list = search_bill_keywords.select_bills(vote_scraper.get_vote_dictionary(self.member_list[str(self.member_str)]),self.keyword_str)
+                        self.bill_list = search_bill_keywords.select_bills(vote_scraper.get_vote_dictionary(self.member_list[str(self.member_str)]),self.keyword_str)
 
         def set_member_list(self, member_list):
                 self.member_list = member_list
