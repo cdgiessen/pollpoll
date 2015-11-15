@@ -2,6 +2,7 @@
 
 import sys
 from PyQt4 import QtGui, QtCore
+import member_list_scraper
 
 class PollPollUI(QtGui.QWidget):
 
@@ -59,11 +60,11 @@ class PollPollUI(QtGui.QWidget):
                 self.show()
 
 def main():
-        foo = ['jet fuel can\'t melt steel beams', 'VHF', 'Drug war', 'Serbian Centro', 'radar', 'CCS', 'Mossberg', 'MD5', 'Ft. Bragg', 'Oscor', 'Benghazi', 'private mail server', 'Hillary Clinton', 'embassy', 'XS4ALL', 'Osama bin Laden', 'Mayfly', 'HALO']
-        bar = ['ANZUS', 'jet fuel', 'steel beams', 'George Bush', '9/11', 'Plot', 'NATO', 'Attorney General', 'CDMA', 'Ansar al-Islam', 'PBX', 'tempest', 'Mayfly', 'Intiso', 'gamma', 'Zachawi', 'Edward Snowden', 'afsatcom', 'CIA', 'Saddam Hussein']
+        members = member_list_scraper.get_member_names()
+        sample_keywords = ['ANZUS', 'jet fuel', 'steel beams', 'George Bush', '9/11', 'Plot', 'NATO', 'Attorney General', 'CDMA', 'Ansar al-Islam', 'PBX', 'tempest', 'Mayfly', 'Intiso', 'gamma', 'Zachawi', 'Edward Snowden', 'afsatcom', 'CIA', 'Saddam Hussein']
         app = QtGui.QApplication(sys.argv)
         ex = PollPollUI()
-        ex.initUI(foo, bar)
+        ex.initUI(members, sample_keywords)
         sys.exit(app.exec_())
 
 
