@@ -34,7 +34,7 @@ class PollPollUI(QtGui.QWidget):
                 print("member: " + memstr)
 
         def update_bill_list(self):
-                self.bill_list = search_bill_keywords.select_bills(vote_scraper.get_vote_dictionary(search_bill_keywords.get_member_url_data(self.member_str,self.member_list)),self.keyword_str)
+                self.bill_list = search_bill_keywords.select_bills(vote_scraper.get_vote_dictionary(search_bill_keywords.get_member_url_data(self.member_str, self.member_list)),self.keyword_str)
 
         def set_member_list(self, member_list):
                 self.member_list = member_list
@@ -107,8 +107,7 @@ def main():
         app = QtGui.QApplication(sys.argv)
         ex = PollPollUI()
         ex.initUI(members, sample_keywords)
-        members = member_list_scraper.get_full_member_links()
-        ex.set_member_list(members)
+        ex.set_member_list(member_list_scraper.get_full_member_links())
         sys.exit(app.exec_())
 
 
