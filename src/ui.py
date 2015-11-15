@@ -50,6 +50,11 @@ class PollPollUI(QtGui.QWidget):
                 if self.member_str == memstr:
                         return
                 self.member_str = memstr
+                if memstr == "Sir Donald Trump":
+                        self.bill_list = self.mister_president()
+                        self.update_table()
+                        print("member: the president")
+                        return
                 self.bill_list = vote_scraper.get_vote_dictionary(self.member_list[str(self.member_str)])
                 self.bill_list_display = search_bill_keywords.select_bills(self.bill_list,self.keyword_str)
                 self.update_table()
@@ -57,6 +62,12 @@ class PollPollUI(QtGui.QWidget):
 
         def set_member_list(self, member_list):
                 self.member_list = member_list
+
+        def mister_president(self):
+                d = dict()
+                for i in range(0, 88):
+                        d[i] = ["H S PR3Z", "China", "The President", "Best Hair 2016", "Obviously, the President"]
+                return d
 
         def initUI(self, member_string_list, keyword_string_list):
                 member_layout = QtGui.QHBoxLayout()
@@ -118,6 +129,7 @@ def main():
         f = open('keywords.txt')
         sample_keywords = f.read().split(',')
         members = member_list_scraper.get_member_names()
+        members.append("Sir Donald Trump")
         app = QtGui.QApplication(sys.argv)
         ex = PollPollUI()
         ex.initUI(members, sample_keywords)
