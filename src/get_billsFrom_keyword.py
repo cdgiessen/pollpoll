@@ -12,4 +12,3 @@ def selectBills(dict, string = ""):
                 newList[value] = dict[value]
         return newList
 
-
