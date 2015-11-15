@@ -73,6 +73,7 @@ class PollPollUI(QtGui.QWidget):
                 keyword_completer.setModel(keyword_model)
 
                 keyword_le = QtGui.QLineEdit(self)
+                keyword_le.textEdited.connect(self.keyword_changed)
                 keyword_le.setCompleter(keyword_completer)
                 keyword_layout.addWidget(keyword_le)
 
