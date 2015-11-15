@@ -3,6 +3,8 @@
 import sys
 from PyQt4 import QtGui, QtCore
 import member_list_scraper
+import search_bill_keywords
+import vote_scraper
 
 class PollPollUI(QtGui.QWidget):
 
@@ -17,9 +19,16 @@ class PollPollUI(QtGui.QWidget):
                 self.keyword_str = keystr
                 print("keyword: " + keystr)
 
+
         def member_changed(self, memstr):
-                self.member_str = member
+                self.member_str = memstr
                 print("member: " + memstr)
+
+        def update_bill_list(self):
+                self.bill_list = search_bill_keywords.select_bills(vote_scraper.main(search_bill_keywords.get_member_url_data(self.member_str)),self.keyword_str)
+
+        def set_member_list(self, member_list):
+                self.member_list = member_list
 
         def initUI(self, member_string_list, keyword_string_list):
                 member_layout = QtGui.QHBoxLayout()
@@ -81,6 +90,7 @@ def main():
         app = QtGui.QApplication(sys.argv)
         ex = PollPollUI()
         ex.initUI(members, sample_keywords)
+        ex.set_member_list(members)
         sys.exit(app.exec_())
 
 
