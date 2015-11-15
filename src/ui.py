@@ -28,7 +28,7 @@ class PollPollUI(QtGui.QWidget):
         def update_table(self):
                 self.table.setRowCount(len(self.bill_list_display))
                 for i in range(len(self.bill_list)):
-                        for j in range(0,4):
+                        for j in range(0,5):
                                 item = QtGui.QTableWidgetItem(self.bill_list[i][j])
                                 self.table.setItem(i, j, item)
 
@@ -78,22 +78,10 @@ class PollPollUI(QtGui.QWidget):
                 self.table.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
                 rows = self.table.rowCount()
                 columns = self.table.columnCount()
-                #for i in range(rows):
-                #        for j in range(columns):
-                #                item = QtGui.QTableWidgetItem()
-                #                item.setText("foo")
-                #                flags = item.flags()
-                #                print(flags)
-                #                flags ^= QtCore.Qt.ItemIsEditable
-                #                print(flags)
-                #                self.table.setItem(i, j, item)
-                                #item = self.table.items(i,j)
-                                #item.setFlags(QtCore.Qt.ItemIsEditable, False)
 
-                #table.setSizePolicy(QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Expanding)
                 self.table.setRowCount(100)
                 self.table.setColumnCount(4)
-                self.table.setHorizontalHeaderLabels(["Bill", "Vote", "Passed", "Description"])
+                self.table.setHorizontalHeaderLabels(["Bill", "Vote #", "Voted", "Passed", "Description"])
 
                 main_layout = QtGui.QVBoxLayout()
                 main_layout.addLayout(member_layout)
