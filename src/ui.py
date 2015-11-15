@@ -11,12 +11,11 @@ class PollPollUI(QtGui.QWidget):
 
         def initUI(self):
                 member_layout = QtGui.QHBoxLayout()
-                #member_layout.addStretch(1)
                 member_description = QtGui.QLabel("Member")
                 member_layout.addWidget(member_description)
 
                 member_model = QtGui.QStringListModel()
-                member_model.setStringList(['jet fuel can\'t melt steel beams', 'VHF', 'Drug war', 'Serbian Centro', 'radar', 'CCS', 'Mossberg', 'MD5', 'Ft. Bragg', 'Oscor', 'embassy', 'XS4ALL', 'Osama bin Laden', 'Mayfly', 'HALO'])
+                member_model.setStringList(['jet fuel can\'t melt steel beams', 'VHF', 'Drug war', 'Serbian Centro', 'radar', 'CCS', 'Mossberg', 'MD5', 'Ft. Bragg', 'Oscor', 'Benghazi', 'private mail server', 'Hillary Clinton', 'embassy', 'XS4ALL', 'Osama bin Laden', 'Mayfly', 'HALO'])
                 member_completer = QtGui.QCompleter()
                 member_completer.setModel(member_model)
                 member_le = QtGui.QLineEdit(self)
@@ -24,11 +23,10 @@ class PollPollUI(QtGui.QWidget):
                 member_layout.addWidget(member_le)
 
                 keyword_layout = QtGui.QHBoxLayout()
-                #keyword_layout.addStretch(1)
                 keyword_description = QtGui.QLabel("Keyword")
                 keyword_layout.addWidget(keyword_description)
                 keyword_model = QtGui.QStringListModel()
-                keyword_model.setStringList(['ANZUS', 'jet fuel', 'steel beams', 'George Bush', '9/11', 'Plot', 'NATO', 'Attorney General', 'CDMA', 'Ansar al-Islam', 'PBX', 'tempest', 'Mayfly', 'Intiso', 'gamma', 'Zachawi', 'afsatcom', 'CIA', 'Saddam Hussein'])
+                keyword_model.setStringList(['ANZUS', 'jet fuel', 'steel beams', 'George Bush', '9/11', 'Plot', 'NATO', 'Attorney General', 'CDMA', 'Ansar al-Islam', 'PBX', 'tempest', 'Mayfly', 'Intiso', 'gamma', 'Zachawi', 'Edward Snowden', 'afsatcom', 'CIA', 'Saddam Hussein'])
 
                 keyword_completer = QtGui.QCompleter()
                 keyword_completer.setModel(keyword_model)
@@ -43,7 +41,7 @@ class PollPollUI(QtGui.QWidget):
                 columns = table.columnCount()
                 for i in range(rows):
                         for j in range(columns):
-                                item = table.item(i,j)
+                                item = table.items(i,j)
                                 item.setFlags(QtCore.Qt.ItemIsEditable, false)
 
                 #table.setSizePolicy(QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Expanding)
@@ -51,13 +49,7 @@ class PollPollUI(QtGui.QWidget):
                 table.setColumnCount(4)
                 table.setHorizontalHeaderLabels(["Bill", "Voter", "Passed", "Description"])
 
-                #scroller = QtGui.QScrollArea()
-                #scroller.setWidget(table)
-                #scroller.setWidgetResizable(True)
-
-                #scroller.sizeHint()
                 main_layout = QtGui.QVBoxLayout()
-                #main_layout.addStretch(1)
                 main_layout.addLayout(member_layout)
                 main_layout.addLayout(keyword_layout)
                 main_layout.addWidget(table)
