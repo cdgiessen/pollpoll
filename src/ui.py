@@ -90,7 +90,7 @@ class PollPollUI(QtGui.QWidget):
                 #table.setSizePolicy(QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Expanding)
                 self.table.setRowCount(100)
                 self.table.setColumnCount(4)
-                self.table.setHorizontalHeaderLabels(["Bill", "Voter", "Passed", "Description"])
+                self.table.setHorizontalHeaderLabels(["Bill", "Vote", "Passed", "Description"])
 
                 main_layout = QtGui.QVBoxLayout()
                 main_layout.addLayout(member_layout)
