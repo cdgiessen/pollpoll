@@ -16,8 +16,10 @@ class PollPollUI(QtGui.QWidget):
         def keyPressEvent(self, e):
                 if e.key() == QtCore.Qt.Key_Escape:
                         self.close()
-                elif e.key() == QtCore.Qt.Key_R:
-                        print("let's get more table stuff")
+                elif e.key() == QtCore.Qt.Key_F11:
+                        self.bill_list = vote_scraper.get_vote_dictionary(self.member_list[str(self.member_str)], vote_scraper.get_max_pg())
+                        self.bill_list_display = search_bill_keywords.select_bills(self.bill_list,self.keyword_str)
+                        self.update_table()
 
         def keyword_changed(self, keystr):
                 self.keyword_str = keystr
