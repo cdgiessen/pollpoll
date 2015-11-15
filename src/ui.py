@@ -23,6 +23,7 @@ class PollPollUI(QtGui.QWidget):
         def member_changed(self, memstr):
                 if self.member_str == memstr:
                         return
+                self.member_str = memstr
                 self.update_bill_list()
                 self.table.setRowCount(len(self.bill_list))
                 for i in range(self.bill_list):
@@ -30,7 +31,6 @@ class PollPollUI(QtGui.QWidget):
                                 item = QtGui.QTableWidgetItem()
                                 item.setName(bill_list[i][j])
                                 self.table.setItem(item, i, j)
-                self.member_str = memstr
                 print("member: " + memstr)
 
         def update_bill_list(self):
