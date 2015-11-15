@@ -9,6 +9,4 @@ def select_bills(dictionary, string = ""):
             s = str(st)
             if s in str(dictionary[i][4]):
                 newDict[i] = dictionary[i]
-                print newDict[i]
-                print dictionary[i]
     return newDict

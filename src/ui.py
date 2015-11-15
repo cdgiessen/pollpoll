@@ -27,9 +27,9 @@ class PollPollUI(QtGui.QWidget):
 
         def update_table(self):
                 self.table.setRowCount(len(self.bill_list_display))
-                for i in range(len(self.bill_list)):
-                        for j in range(0,len(self.bill_list[i])):
-                                item = QtGui.QTableWidgetItem(self.bill_list[i][j])
+                for i in range(len(self.bill_list_display)):
+                        for j in range(0,len(self.bill_list_display[i])):
+                                item = QtGui.QTableWidgetItem(self.bill_list_display[i][j])
                                 self.table.setItem(i, j, item)
 
         def member_changed(self, memstr):
