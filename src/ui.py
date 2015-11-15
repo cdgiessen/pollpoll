@@ -21,7 +21,7 @@ class PollPollUI(QtGui.QWidget):
 
         def keyword_changed(self, keystr):
                 self.keyword_str = keystr
-                self.bill_list_display = search_bill_keywords.select_bills(self.member_list,self.keyword_str)
+                self.bill_list_display = search_bill_keywords.select_bills(self.bill_list,self.keyword_str)
                 self.update_table()
                 print("keyword: " + keystr)
 

@@ -4,10 +4,11 @@ def select_bills(dictionary, string = ""):
     newDict = dict()
     sList = string.split('\s')
     
-    for st in sList:
-        s = str(st)
-        p = re.compile(s, re.IGNORECASE)
-        for i in dictionary:
-            if p.match(dictionary[i][3]) != None:
+    for i in dictionary:
+        for st in sList:
+            s = str(st)
+            if s in str(dictionary[i][4]):
                 newDict[i] = dictionary[i]
+                print newDict[i]
+                print dictionary[i]
     return newDict
