@@ -22,7 +22,8 @@ def select_bills(dictionary, string = ""):
             #if allRelevant:
             #    newList[value] = dictionary[value]
 
-            if p.match(dictionary[value][3]) != None:
+            if re.match(p, dictionary[value][3], re.IGNORECASE) != None:
+                print "poop"
                 newList[value] = dictionary[value]
 
         return newList
