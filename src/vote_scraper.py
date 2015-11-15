@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 from urllib2 import urlopen
 import re
 
@@ -30,7 +29,7 @@ def description_get(in_str):
 #Name Get
 def name_get(in_str):
     sen = []# = re.findall('[A-Z] [0-9]{3,4}', in_str, re.DOTALL)
-    rep = re.findall('[A-Z] [A-Z]{0,3}[0-9]{3,4}', in_str, re.DOTALL)
+    rep = re.findall('[SH] [RES]{0,3}[\s]{0,1}[0-9]{3,4}', in_str, re.DOTALL)
     if sen != []:
         return sen[0]
     if rep != []:
@@ -44,25 +43,28 @@ def voted_get(in_str):
 
 #Passed
 def passed_get(in_str):
-    strV = re.findall('(?=assed).*(?<=</span>)',in_str)
-    print(strV)
-    strP = strV[0].split(">" , 1)
-    strP2 = strP[1].split("<",1)
-    return strP2[0]
-
+    strP = re.findall('(?=assed).*(?<=</span>)',in_str)
+    if strP != []:
+        strP2 = strP[0].split(">" , 1)
+        strP3 = strP2[1].split("<",1)
+        return strP3[0]
+    strF = re.findall('(?=ailed).*(?<=</span>)',in_str)
+    if strF != []:
+        strF2 = strF[0].split(">" , 1)
+        strF3 = strF2[1].split("<",1)
+        return strF3[0]
+    return "Unknown"
 
 #Scans Page
 def scan_page(PAGE_URL):
+    global d
+    global dictionary_index
     html = urlopen(PAGE_URL).read()
     regex = re.findall('(?<=VOTE ROW).*(?=END VOTE ROW)', html, re.DOTALL)
     str1 = regex[0]
     regex2 = re.findall('(?<=<tr>).*(?=</tr>)',str1,re.DOTALL)
     strlist = regex2[0].split("</tr>", 10)
     for str in strlist:
-        #print("\nSTRING: \n")
-        
-        #print(str)
-
         #Info Get
         print("\nDescript: \n")
         descript = description_get(str)
@@ -76,9 +78,9 @@ def scan_page(PAGE_URL):
         print("\nPassed: \n")
         passed = passed_get(str)
         print(passed)
-        #if passed == "Failed" or passed == "Passed":
-         #   d[dictionary_index] = [name,voted,passed,descript]
-          #  dictionary_index = dictionary_index + 1
+        if name != "N/A":
+            d[dictionary_index] = [name,voted,passed,descript]
+            dictionary_index = dictionary_index + 1
 
 
 
