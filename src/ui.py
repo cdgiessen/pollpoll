@@ -21,7 +21,8 @@ class PollPollUI(QtGui.QWidget):
 
         def keyword_changed(self, keystr):
                 self.keyword_str = keystr
-                self.update_bill_with_keyword()
+                self.bill_list_display = search_bill_keywords.select_bills(self.member_list,self.keyword_str)
+                self.update_table()
                 print("keyword: " + keystr)
 
         def update_table(self):
@@ -35,17 +36,10 @@ class PollPollUI(QtGui.QWidget):
                 if self.member_str == memstr:
                         return
                 self.member_str = memstr
-                self.update_bill_list()
-                print("member: " + memstr)
-
-        def update_bill_list(self):
                 self.bill_list = vote_scraper.get_vote_dictionary(self.member_list[str(self.member_str)])
                 self.bill_list_display = search_bill_keywords.select_bills(self.bill_list,self.keyword_str)
                 self.update_table()
-
-        def update_bill_with_keyword(self):
-                self.bill_list_display = search_bill_keywords.select_bills(self.member_list,self.keyword_str)
-                self.update_table()
+                print("member: " + memstr)
 
         def set_member_list(self, member_list):
                 self.member_list = member_list
