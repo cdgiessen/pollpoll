@@ -14,9 +14,11 @@ class PollPollUI(QtGui.QWidget):
                         self.close()
 
         def keyword_changed(self, keystr):
+                self.keyword_str = keystr
                 print("keyword: " + keystr)
 
         def member_changed(self, memstr):
+                self.member_str = member
                 print("member: " + memstr)
 
         def initUI(self, member_string_list, keyword_string_list):
