@@ -18,3 +18,6 @@ def get_full_member_links():
 def get_member_names():
     full_dict = get_full_member_links()
     return full_dict.keys()
+
+http://projects.washingtonpost.com/congress/members/B001265/votes/
+http://projects.washingtonpost.com/congress/members/B001265/votes/
