@@ -10,6 +10,7 @@ class PollPollUI(QtGui.QWidget):
 
         def __init__(self):
                 super(PollPollUI, self).__init__()
+                self.member_str = "foo"
 
         def keyPressEvent(self, e):
                 if e.key() == QtCore.Qt.Key_Escape:
@@ -21,6 +22,8 @@ class PollPollUI(QtGui.QWidget):
 
 
         def member_changed(self, memstr):
+                if self.member_str == memstr:
+                        return
                 self.member_str = memstr
                 print("member: " + memstr)
 
