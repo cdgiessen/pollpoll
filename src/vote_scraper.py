@@ -90,7 +90,7 @@ def get_vote_dictionary(input_ID):
         scan_page(PAGE_URL)
     return d
 #Returns dictionary of votes/bills - MAX POSSIBLE VALUES
-def get_vote_dictionary(input_ID, MAX):
+def get_vote_dictionary(input_ID, MAX = 10):
     PARTICULAR_URL = BASE_WEB_URL + input_ID + "/votes/"
     PAGE_URL = BASE_WEB_URL + input_ID + "/votes/"
     max_pg = get_max_pg(PAGE_URL)
@@ -100,6 +100,21 @@ def get_vote_dictionary(input_ID, MAX):
     else:
         ma_pg = max_pg
     for val in range(2,ma_pg):
+        PAGE_URL = BASE_WEB_URL + input_ID + "/votes/" + "page" + str(val) + "/"
+        scan_page(PAGE_URL)
+    return d
+
+#Returns dictionary of votes/bills - MAX POSSIBLE VALUES
+def get_vote_dictionary(input_ID, MAX = 10, MIN = 2):
+    PARTICULAR_URL = BASE_WEB_URL + input_ID + "/votes/"
+    PAGE_URL = BASE_WEB_URL + input_ID + "/votes/"
+    max_pg = get_max_pg(PAGE_URL)
+    scan_page(PAGE_URL)
+    if MAX < max_pg:
+        ma_pg = MAX
+    else:
+        ma_pg = max_pg
+    for val in range(MIN,ma_pg):
         PAGE_URL = BASE_WEB_URL + input_ID + "/votes/" + "page" + str(val) + "/"
         scan_page(PAGE_URL)
     return d
