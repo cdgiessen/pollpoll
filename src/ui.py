@@ -25,6 +25,11 @@ class PollPollUI(QtGui.QWidget):
                         return
                 self.update_bill_list()
                 self.table.setRowCount(len(self.bill_list))
+                for i in range(self.bill_list):
+                        for j in range(0,3):
+                                item = QtGui.QTableWidgetItem()
+                                item.setName(bill_list[i][j])
+                                self.table.setItem(item, i, j)
                 self.member_str = memstr
                 print("member: " + memstr)
 
