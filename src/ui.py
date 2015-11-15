@@ -61,12 +61,20 @@ class PollPollUI(QtGui.QWidget):
 
                 self.table = QtGui.QTableWidget()
 
+                self.table.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
                 rows = self.table.rowCount()
                 columns = self.table.columnCount()
-                for i in range(rows):
-                        for j in range(columns):
-                                item = self.table.items(i,j)
-                                item.setFlags(QtCore.Qt.ItemIsEditable, False)
+                #for i in range(rows):
+                #        for j in range(columns):
+                #                item = QtGui.QTableWidgetItem()
+                #                item.setText("foo")
+                #                flags = item.flags()
+                #                print(flags)
+                #                flags ^= QtCore.Qt.ItemIsEditable
+                #                print(flags)
+                #                self.table.setItem(i, j, item)
+                                #item = self.table.items(i,j)
+                                #item.setFlags(QtCore.Qt.ItemIsEditable, False)
 
                 #table.setSizePolicy(QtGui.QSizePolicy.Expanding,QtGui.QSizePolicy.Expanding)
                 self.table.setRowCount(100)
